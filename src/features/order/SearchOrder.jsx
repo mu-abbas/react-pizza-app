@@ -13,8 +13,14 @@ export default function SearchOrder() {
   }
 
   return (
-    <form onSubmit={handleSearch}>
-      <input type="text" placeholder="Search order number" value={query} onChange={e => setQuery(e.target.value)} />
+    <form onSubmit={handleSearch} className="flex-1 max-w-xs">
+      <input
+        className="w-full px-2 py-1 text-sm tracking-tighter text-center transition duration-300 bg-yellow-100 rounded-full placeholder:text-md sm:text-lg placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-500/10 focus:scale-105"
+        type="text"
+        placeholder="Search #order"
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+      />
     </form>
   );
 }
