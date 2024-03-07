@@ -10,6 +10,9 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  *:focus {
+    outline: none;
+  }
 }
 
 @layer components {

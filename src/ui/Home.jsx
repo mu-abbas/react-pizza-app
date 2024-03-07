@@ -13,7 +13,7 @@ function Home() {
         Straight out of the oven, straight to you.
       </p>
       <button
-        className="px-6 py-3 mt-6 text-sm font-semibold capitalize bg-yellow-400 rounded-full md:mt-12 md:text-lg"
+        className="px-6 py-3 mt-6 text-sm font-semibold capitalize transition duration-300 bg-yellow-400 rounded-full md:mt-12 md:text-lg hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2"
         onClick={() => navigate('./menu')}
       >
         continue ordering, muhammad
