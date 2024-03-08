@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { Form, useActionData, useNavigation } from 'react-router-dom';
 
 const fakeCart = [
@@ -29,9 +30,10 @@ function CreateOrder() {
   const isSubmitting = navigation.state === 'submitting';
   const errors = useActionData();
   const cart = fakeCart;
+  const { userName } = useSelector(state => state.user);
 
   return (
-    <div className="container max-w-3xl p-4 mx-auto space-y-8">
+    <div className="container max-w-3xl p-8 mx-auto space-y-8">
       <h2 className="text-xl font-semibold text-center">Ready to order? Let&apos;s go!</h2>
 
       <Form method="POST" className="space-y-6">
@@ -41,6 +43,7 @@ function CreateOrder() {
             type="text"
             name="customer"
             required
+            defaultValue={userName}
             className="w-2/3 px-4 py-2 text-base border rounded-full border-stone-200 focus:ring-2 ring-yellow-400"
           />
         </div>

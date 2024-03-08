@@ -1,32 +1,11 @@
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
-
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from './cartSlice';
 
 function Cart() {
-  const cart = fakeCart;
+  const { cart } = useSelector(state => state.cart);
+  const dispatch = useDispatch();
 
   return (
     <div className="container max-w-3xl p-4 mx-auto space-y-8">
@@ -46,7 +25,10 @@ function Cart() {
         >
           Order pizzas
         </Link>
-        <button className="px-4 py-3 mt-6 text-sm font-semibold uppercase transition duration-300 border-2 rounded-full bg-stone-100 md:mt-12 border-stone-300 hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-300 focus:ring-offset-1 text-stone-400 hover:text-stone-600">
+        <button
+          className="px-4 py-3 mt-6 text-sm font-semibold uppercase transition duration-300 border-2 rounded-full bg-stone-100 md:mt-12 border-stone-300 hover:bg-stone-300 focus:outline-none focus:ring-2 focus:ring-stone-300 focus:ring-offset-1 text-stone-400 hover:text-stone-600"
+          onClick={() => dispatch(clearCart())}
+        >
           Clear cart
         </button>
       </div>
