@@ -25,23 +25,23 @@ function Order() {
         </div>
       </div>
 
-      <div className="p-6 space-y-2 bg-stone-200">
+      <div className="flex flex-col gap-2 p-6 md:flex-row md:justify-between bg-stone-200">
         <p className="font-semibold tracking-wide">
           {deliveryIn >= 0 ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃` : 'Order should have arrived'}
         </p>
         <p className="text-xs text-stone-500">(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
 
-      <ul>
+      <ul className="divide-y border-y divide-stone-200 border-stone-200">
         {cart.map(item => (
           <OrderItem item={item} key={item.name} />
         ))}
       </ul>
 
-      <div>
-        <p>Price pizza: {formatCurrency(orderPrice)}</p>
+      <div className="flex flex-col gap-2 p-6 md:flex-row md:justify-between bg-stone-200">
+        <p className="text-sm font-semibold text-stone-500">Price pizza: {formatCurrency(orderPrice)}</p>
         {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
-        <p>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
+        <p className="font-semibold tracking-wide">To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
       </div>
     </div>
   );
