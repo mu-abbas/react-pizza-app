@@ -25,9 +25,9 @@ export default {
       animation: {
         loading: 'loading 1s infinite ease-in-out',
       },
-      // height: {
-      //   screen: '100dvh',
-      // },
+      height: {
+        screen: '100dvh',
+      },
     },
   },
   plugins: [],
