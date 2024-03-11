@@ -15,10 +15,10 @@ function Order() {
 
   return (
     <div className="container max-w-3xl p-8 mx-auto space-y-8">
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between sm:flex-row">
         <h2 className="text-xl font-semibold">Order #{order.id} Status</h2>
 
-        <div className="flex items-center justify-center gap-1">
+        <div className="flex items-center justify-start gap-1 sm:justify-center">
           {priority && (
             <span className="px-2 py-1 text-xs font-semibold tracking-tighter text-red-100 uppercase bg-red-500 rounded-full">
               Priority
