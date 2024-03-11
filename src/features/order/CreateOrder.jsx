@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, useActionData, useNavigate, useNavigation } from 'react-router-dom';
+import { Form, Link, useActionData, useNavigation } from 'react-router-dom';
 import { clearCart } from '../cart/cartSlice';
+import EmptyCart from '../cart/EmptyCart';
 
 function CreateOrder() {
   const navigation = useNavigation();
-  const navigate = useNavigate();
   const isSubmitting = navigation.state === 'submitting';
   const errors = useActionData();
   const { cart } = useSelector(state => state.cart);
@@ -18,9 +18,15 @@ function CreateOrder() {
     }
   }, [navigation.state, dispatch]);
 
-  useEffect(() => {
-    if (!cart.length) return navigate('/cart', { replace: true });
-  }, [cart, navigate]);
+  if (!cart.length && navigation.state === 'idle')
+    return (
+      <div className="container max-w-3xl p-4 mx-auto space-y-8">
+        <Link to="/menu" className="text-blue-400 transition duration-300 hover:text-blue-600 focus:text-blue-600">
+          &larr; Back to menu
+        </Link>
+        <EmptyCart />
+      </div>
+    );
 
   return (
     <div className="container max-w-3xl p-8 mx-auto space-y-8">
